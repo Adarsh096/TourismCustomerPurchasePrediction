@@ -72,4 +72,5 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_USER_NAME: ${{vars.HUGGINGFACE_USER_NAME}}
           HUGGINGFACE_SPACE_NAME: ${{vars.HUGGINGFACE_SPACE_NAME}}
+          HUGGINGFACE_MODEL_NAME: ${{vars.HUGGINGFACE_MODEL_NAME}}
         run: python tourism_project/hosting/hosting.py
