@@ -10,7 +10,7 @@ api = HfApi(token=os.getenv("HF_TOKEN"))
 
 # Try to create the repo if it doesn't exist
 try:
-    create_repo(repo_id=repo_id, repo_type="space", space_sdk="docker", private=False)
+    create_repo(repo_id=repo_id, repo_type="space", space_sdk="streamlit", private=False)
     print(f"Space created at: {repo_id}")
 except Exception as e:
     print(f"Space already exists or encountered an error: {e}")

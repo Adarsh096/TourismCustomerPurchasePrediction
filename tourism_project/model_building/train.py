@@ -64,8 +64,8 @@ preprocessor = make_column_transformer(
 
 xgb_model = xgb.XGBClassifier(scale_pos_weight=class_weight, random_state=42)
 param_grid = {
-    'xgbclassifier__n_estimators': [50, 100],
-    'xgbclassifier__max_depth': [3, 4],
+    'xgbclassifier__n_estimators': [50, 100, 150],
+    'xgbclassifier__max_depth': [3, 4, 5],
     'xgbclassifier__learning_rate': [0.05, 0.1],
 }
 
