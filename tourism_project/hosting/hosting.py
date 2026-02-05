@@ -1,14 +1,23 @@
-from huggingface_hub import HfApi
+from huggingface_hub import HfApi, create_repo
 import os
 
 #common constants:
 HUGGINGFACE_USER_NAME = os.getenv('HUGGINGFACE_USER_NAME')
 HUGGINGFACE_SPACE_NAME = os.getenv('HUGGINGFACE_SPACE_NAME')
+repo_id = f"{HUGGINGFACE_USER_NAME}/{HUGGINGFACE_SPACE_NAME}"
 
 api = HfApi(token=os.getenv("HF_TOKEN"))
+
+# Try to create the repo if it doesn't exist
+try:
+    create_repo(repo_id=repo_id, repo_type="space", space_sdk="docker", private=False)
+    print(f"Space created at: {repo_id}")
+except Exception as e:
+    print(f"Space already exists or encountered an error: {e}")
+
 api.upload_folder(
     folder_path="tourism_project/deployment",
-    repo_id=f"{HUGGINGFACE_USER_NAME}/{HUGGINGFACE_SPACE_NAME}",  # the target repo
+    repo_id=repo_id,  # the target repo
     repo_type="space", # dataset, model, or space
     path_in_repo="", # optional: subfolder path inside the repo
 )
